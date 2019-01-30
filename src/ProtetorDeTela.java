@@ -18,6 +18,7 @@ public class ProtetorDeTela extends JPanel implements ActionListener{
 		tempo = new Timer(1000, this);
 		tempo.start();
 		this.limite = limite;
+		
 	}
 	
 	@Override
@@ -28,7 +29,30 @@ public class ProtetorDeTela extends JPanel implements ActionListener{
 		for(int i = 0; i < limite; i++) {
 			
 			g.setColor(new Color(aleatorio.nextInt(256), aleatorio.nextInt(256), aleatorio.nextInt(256)));
-			g.drawLine(aleatorio.nextInt(getWidth()), aleatorio.nextInt(getHeight()), aleatorio.nextInt(getWidth()), aleatorio.nextInt(getHeight()));
+			
+			int forma = aleatorio.nextInt(4);
+			int pontoX = aleatorio.nextInt(getWidth());
+			int pontoY = aleatorio.nextInt(getHeight());
+			
+			if(forma == 0) {
+				
+				g.drawLine(pontoX, pontoY, aleatorio.nextInt(getWidth()), aleatorio.nextInt(getHeight()));
+				
+			}else if(forma == 1) {
+				
+				g.fillRect(pontoX, pontoY, aleatorio.nextInt(getWidth() - pontoX), aleatorio.nextInt(getHeight() - pontoY));
+				
+			}else if(forma == 2) {
+				
+				g.fillOval(pontoX, pontoY, aleatorio.nextInt(getWidth() - pontoX), aleatorio.nextInt(getHeight() - pontoY));
+				
+			}else if(forma == 3) {
+				
+				g.fillArc(pontoX, pontoY, aleatorio.nextInt(getWidth() - pontoX), aleatorio.nextInt(getHeight() - pontoY), 
+						aleatorio.nextInt(360), aleatorio.nextInt(360));
+				
+			}
+			
 			
 		}
 		
